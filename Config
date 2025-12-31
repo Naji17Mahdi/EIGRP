@@ -1,0 +1,14 @@
+Router>enable 
+Router#configure 
+Router(config)#interface gigabitEthernet 0/0
+Router(config-if)#no shutdown 
+Router(config-if)#ip address 192.168.20.1 255.255.255.252
+Router(config-if)#exit 
+Router(config)#interface gigabitEthernet 0/1
+Router(config-if)#no shutdown 
+Router(config-if)#ip address 192.168.10.1 255.255.255.0
+Router(config-if)#exit 
+Router(config)#router eigrp 1
+Router(config-router)#network 192.168.10.0
+Router(config-router)#network 192.168.20.0
+Router(config-router)#passive-interface gigabitEthernet 0/1
